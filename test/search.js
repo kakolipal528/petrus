@@ -1,9 +1,16 @@
 const Petrus = require("../petrus")
-
-Petrus.search("Final Space")
+var express = require('express');
+var app = express();
+app.get('/', function(req, res){
+  Petrus.search(req.query.val)
   .then(results => {
-    console.log(results)
+    res.send(results);
   })
   .catch(err => {
     console.error(err)
   })
+});
+
+app.listen(4000);
+
+

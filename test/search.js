@@ -4,6 +4,7 @@ var app = express();
 app.get('/', function(req, res){
   Petrus.search(req.query.val)
   .then(results => {
+    res.set('Access-Control-Allow-Origin', '*')
     res.send(results);
   })
   .catch(err => {
